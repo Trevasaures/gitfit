@@ -1,0 +1,46 @@
+/* Styling for the main body elements */
+body {
+    background: linear-gradient(to bottom, #77e3eb, #0eb1da);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 128px;
+    padding: 100px;
+}
+
+
+/* Styling for main header 1 and 2 */
+h1, h2 {
+    color: #333;
+    border-radius: 5px;
+    box-shadow: 2px 4px 15px #414040;
+}
+a {
+    display: block;
+    margin: 15px 0;
+    padding: 12px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 15px;
+    transition: background-color 0.3s;
+    /* Some box shadow razzle dazzle */
+    box-shadow: 1px 1px 3px #888888;
+}
+/* Styling for the back button */
+.back-button {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px #888888;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect for the back button */
+.back-button:hover {
+    background-color: #c0392b;
+}
