@@ -4,54 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ctrl+Alt+Elite</title>
-    <style>
-        /* Styling for the main body elements */
-        body {
-            background-color: #2fd6e2;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            /* Use the margin to take the entire page */
-            margin: 128px;
-
-            /* Padding to adjust the gradient aloong with the bakground icons */ 
-            padding: 100px;
-            
-            /* Gradient background to become more transparent with flowing down */
-            background: linear-gradient(to bottom, #77e3eb, #0eb1da);
-        }
-
-        /* Styling for main header 1 and 2 */
-        h1, h2 {
-            color: #333;
-            border-radius: 5px;
-            /* Some box shadow razzle dazzle */
-            box-shadow: 2px 4px 15px #414040;
-        }
-
-        /* Styling for the back button */
-        .back-button {
-            position: fixed;
-            bottom: 10px;
-            left: 10px;
-            background-color: #e74c3c;
-            color: #fff;
-            padding: 8px 12px;
-            text-decoration: none;
-            border-radius: 5px;
-            box-shadow: 1px 1px 3px #888888;
-            transition: background-color 0.3s;
-        }  
-
-        /* Hover effect for the back button */
-        .back-button:hover {
-            background-color: #c0392b;
-        }
-    </style>
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
     <!-- Main header for applicaiton -->
-    <h1>Welcome to the weight tracker!</h1>
+    <h1 id="h1">Welcome to the weight tracker!</h1>
 
     <!-- Back button -->
     <a href="index.html" class="back-button">&#8678; Back to Main</a>

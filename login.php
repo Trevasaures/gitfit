@@ -1,24 +1,62 @@
 <?php
+session_start(); // Start session at the beginning of the script
 include 'dbconfig.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
-    $password = $_POST['password']; // For simplicity; consider hashing in a real-world scenario
+    $password = $_POST['password']; // This is the hashed password, hashed in register.php
 
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
-    $stmt->execute([$username, $password]);
+    $stmt = $pdo->prepare("SELECT * FROM users_table WHERE username = ?");
+    $stmt->execute([$username]);
 
-    if ($stmt->fetch()) {
-        echo "Logged in successfully!";
-        // Set session, redirect to dashboard, etc.
+    if ($user = $stmt->fetch()) {
+        // verify password
+        if (password_verify($_POST['password'], $user['password'])) {
+            echo "Password is valid!";
+
+            // store user data in session
+            $_SESSION['id'] = $user['id']; // store user_id in session
+            $_SESSION['username'] = $user['username']; // store username in session
+
+            // redirect to index.php
+            header('Location: index.php');
+            exit;
+        } else {
+            $loginError = "Invalid password!";
+        }
     } else {
-        echo "Incorrect credentials!";
+        $loginError = "Invalid username!";
     }
 }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ctrl+Alt+Elite</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>iFitness Login</h2>
+        
+        <!-- Display login error message if any -->
+        <?php if (!empty($loginError)): ?>
+            <p style="color:red;"><?php echo $loginError; ?></p>
+        <?php endif; ?>
 
-<form action="login.php" method="post">
-    <label>Username: <input type="text" name="username"></label><br>
-    <label>Password: <input type="password" name="password"></label><br>
-    <input type="submit" value="Login">
-</form>
+        <form action="login.php" method="post">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+
+            <input type="submit" value="Login">
+        </form>
+        <div class="register-link">
+            <p>Don't have an account? <a href="register.php">Register</a></p>
+        </div>
+    </div>
+</body>
+</html>
+

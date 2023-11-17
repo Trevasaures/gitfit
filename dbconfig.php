@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db   = 'fitness_db';
+$db   = 'user';
 $user = 'root'; // default user for XAMPP
 $pass = '';     // default password for XAMPP is empty
 $charset = 'utf8mb4';
