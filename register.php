@@ -19,24 +19,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Hash password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // prepare sql and bind parameters
-    $stmt = $pdo->prepare("INSERT INTO users_table (username, password, email, name, height_inches, current_weight, target_weight, age, gender) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bindParam(1, $username);
-    $stmt->bindParam(2, $hashed_password);
-    $stmt->bindParam(3, $email);
-    $stmt->bindParam(4, $name);
-    $stmt->bindParam(5, $height_inches);
-    $stmt->bindParam(6, $current_weight);
-    $stmt->bindParam(7, $target_weight);
-    $stmt->bindParam(8, $age);
-    $stmt->bindParam(9, $gender);
+    // start transaction
+    $pdo->beginTransaction();
 
-    // execute sql statement and check if successful
     try {
+        // Insert user into users_table
+        $stmt = $pdo->prepare("INSERT INTO users_table (username, password, email, name, height_inches, current_weight, target_weight, age, gender) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bindParam(1, $username);
+        $stmt->bindParam(2, $hashed_password);
+        $stmt->bindParam(3, $email);
+        $stmt->bindParam(4, $name);
+        $stmt->bindParam(5, $height_inches);
+        $stmt->bindParam(6, $current_weight);
+        $stmt->bindParam(7, $target_weight);
+        $stmt->bindParam(8, $age);
+        $stmt->bindParam(9, $gender);
         $stmt->execute();
+
+        // Get the ID of the newly inserted user
+        $newUserId = $pdo->lastInsertId();
+
+        // Insert initial weight into weight_records
+        $stmt = $pdo->prepare("INSERT INTO weight_records (id, weight_date, weight) VALUES (?, CURDATE(), ?)");
+        $stmt->execute([$newUserId, $current_weight]);
+
+        // Commit the transaction
+        $pdo->commit();
+
         $registrationSuccess = true;
         header('Location: login.php');
+        exit();
     } catch (PDOException $e) {
+        // Rollback the transaction in case of error
+        $pdo->rollBack();
         $errorMessage = "Error: " . $e->getMessage();
     }
 }
@@ -57,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         <?php if ($registrationSuccess): ?>
             <p>Registration successful!</p>
-            <!-- Add a link to the login page or automatically redirect to login page -->
+            <!-- redirect to login page -->
             <p><a href="login.php">Click here to login</a></p>
         <?php else: ?>
             <?php if ($errorMessage): ?>
