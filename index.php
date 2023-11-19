@@ -53,7 +53,7 @@ $currentWeight = $latestWeight ? $latestWeight['weight'] : 'No record for today!
     <a href="weight.php">Weight Tracking</a>
     <a href="food.html">Food Calculator</a>
     <a href="notes.html">Note Records</a>
-    <a href="workouts.html">Workout Tracking</a>
+    <a href="workouts.php">Workout Tracking</a>
 
     <!-- Back button -->
     <a href="login.php" class="back-button">&#8678; Back to Login</a>
