@@ -71,6 +71,28 @@ INSERT INTO `weight_records` (`weight_id`, `id`, `weight_date`, `weight`) VALUES
 (1, 2, '2023-11-17', 189.00),
 (3, 3, '2023-11-17', 191.00);
 
+
+--
+-- Table structure for table `workout_data'
+--
+
+CREATE TABLE `workout_data` (
+  `workout_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `exercise` varchar(255) NOT NULL,
+  `sets` int(11) NOT NULL,
+  `reps` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+--
+-- Dumping data for table `workout_data`
+--
+
+INSERT INTO `workout_data` (`workout_id`, `id`, `date`, `exercise`, `sets`, `reps`) VALUES
+(2, 2, '2023-11-17', 'Bench Press', 3, 10);
+
 --
 -- Indexes for dumped tables
 --
@@ -90,6 +112,13 @@ ALTER TABLE `weight_records`
   ADD PRIMARY KEY (`weight_id`),
   ADD UNIQUE KEY `id` (`id`,`weight_date`);
 
+  --
+  -- Indexes for table `workout_data`
+  --
+  ALTER TABLE `workout_data`
+    ADD PRIMARY KEY (`workout_id`),
+    ADD UNIQUE KEY `id` (`id`,`date`);
+
 --
 -- AUTO_INCREMENT for dumped tables
 --
@@ -107,6 +136,12 @@ ALTER TABLE `weight_records`
   MODIFY `weight_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `workout_data`
+--
+ALTER TABLE `workout_data`
+  MODIFY `workout_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -115,6 +150,13 @@ ALTER TABLE `weight_records`
 --
 ALTER TABLE `weight_records`
   ADD CONSTRAINT `weight_records_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users_table` (`id`);
+COMMIT;
+
+--
+-- Constraints for table `workout_data`
+--
+ALTER TABLE `workout_data`
+  ADD CONSTRAINT `workout_data_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users_table` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
