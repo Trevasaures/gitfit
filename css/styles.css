@@ -1,38 +1,50 @@
 /* Styling for the main body elements */
 body {
-    background: linear-gradient(to bottom, #77e3eb, #0eb1da);
-    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    font-family: "Tahoma", sans-serif;
     text-align: center;
-    margin: 128px;
+    margin: 20px;
     padding: 100px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 
-/* Styling for main header 1 and 2 */
-h1, h2 {
-    color: #333;
-    border-radius: 5px;
-    box-shadow: 2px 4px 15px #414040;
-}
+/* Styling for main header 1 */
+h1{
+    font-size: 55px;
+    font-weight: 600;
+    background-image: linear-gradient(to left, #888888, #a59d9d);
+    color: transparent;
+    background-clip: text;
+    
+}    
+
 a {
-    display: block;
-    margin: 15px 0;
+    display: inline-block;
+    margin: 15px 10px;
     padding: 12px;
-    background-color: #3498db;
-    color: #fff;
+    background-color: #4973f2;
+    color: #f2f2f2;
     text-decoration: none;
     border-radius: 15px;
     transition: background-color 0.3s;
     /* Some box shadow razzle dazzle */
     box-shadow: 1px 1px 3px #888888;
 }
+
+a:hover {
+    background-color: #1b2040;
+}
+
 /* Styling for the back button */
 .back-button {
     position: fixed;
     bottom: 10px;
     left: 10px;
-    background-color: #e74c3c;
-    color: #fff;
+    background-color: #f2911b;
+    color: #f2f2f2;
     padding: 8px 12px;
     text-decoration: none;
     border-radius: 5px;
@@ -42,28 +54,126 @@ a {
 
 /* Hover effect for the back button */
 .back-button:hover {
-    background-color: #c0392b;
+    background-color: #1b2040;
 }
 
 form {
     margin: 20px auto;
     padding: 20px;
-    background-color: white;
+    background-color: #f2f2f2;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px #888888(0, 0, 0, 0.1);
 }
+
 form {
+    display:flex;
+    -webkit-flex-direction:column;
+    flex-direction:column;
+    -webkit-align-items:center;
+    align-items:center;
     margin: 20px auto;
     padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 button {
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    background-color: #f2911b;
+    color: #f2f2f2;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
+
+button:hover {
+    background-color: #1b2040;
+}
+
+
+p {
+    margin: 20px;
+    padding: 0;
+    color: #0f1026;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+table{
+    display:inline;
+    border: 1px solid #0f1026;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #f2911b;
+    border-radius: 8px;
+    color: #0f1026;
+    text-indent: 20px;
+    text-align: left;
+}
+
+footer {
+    margin-top: auto;
+}
+
+iframe{
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #f2911b;
+    border-radius: 8px;
+}
+
+.header-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;   
+}
+
+
+ul.recipe-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Add specific styling for recipe links */
+ul.recipe-list a{
+    display:inline-block;
+    margin: 15px 10px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    color: #0f1026; 
+    box-shadow: none; 
+    outline: none;
+    transition: background-color 0.3s;
+    border: none; 
+}
+   
+ ul.recipe-list a:hover {
+    background-color: #f2911b;
+}
+
+ul.supplement-list{
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.supplement-list a{
+    display:inline-flex;
+    margin: 15px 10px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    color: #0f1026; 
+    box-shadow: none; 
+    outline: none;
+    transition: background-color 0.3s;
+    border: none; 
+}
+
+ul.supplement-list a:hover {
+    background-color: #f2911b;
+}
+
+
+
+
+
+

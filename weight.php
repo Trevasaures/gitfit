@@ -51,14 +51,17 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
 <body>
     <!-- Main header for applicaiton -->
-    <h1 id="h1">Welcome to the weight tracker!</h1>
+    <h1 id="h1">Weight Tracker</h1>
+    <h3>Use this section to keep track of your weight!</h3>
 
     <!-- Display user stats, progress, and other general information here -->
     <!-- Weight Update Form -->
     <form action="weight.php" method="post">
         <label for="current_weight">Current Weight:</label>
         <input type="number" name="current_weight" id="current_weight" required>
-        <input type="submit" value="Update Weight">
+
+        <button type="submit">Add</button>  
+
     </form>
 
     <?php if ($weightUpdated): ?>
@@ -102,5 +105,11 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
     <!-- Back button -->
     <a href="index.php" class="back-button">&#8678; Back to Main</a>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 by Ctrl+Alt+Elite</p>
+    </footer>
+    
 </body>
 </html>

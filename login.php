@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <div class="login-container">
-        <h2>iFitness Login</h2>
+        <h1>iFitness Login</h1>
         
         <!-- Display login error message if any -->
         <?php if (!empty($loginError)): ?>
@@ -54,12 +54,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" required>
 
-            <input type="submit" value="Login">
+            <button type="submit">Login</button> 
         </form>
         <div class="register-link">
             <p>Don't have an account? <a href="register.php">Register</a></p>
         </div>
     </div>
+
+     <!-- Footer -->
+     <footer>
+        <p>&copy; 2023 by Ctrl+Alt+Elite</p>
+    </footer>
+    
 </body>
 </html>
 

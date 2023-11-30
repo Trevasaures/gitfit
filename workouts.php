@@ -46,9 +46,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <!-- Main header for applicaiton -->
-    <h1>Welcome to the workout tracker!</h1>
+    <h1>Workout Tracker</h1>
+    <h3>Use this section to keep track of your workouts!</h3>
 
-    <h3>Track Your Workout</h3>
+   
     <form action="workouts.php" method="post">
         <label for="date">Date:</label>
         <input type="date" name="date" required>
@@ -64,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
        
     
-        <button type="submit">Add Workout</button>  
+        <button type="submit">Add</button>  
     </form>
 
 
@@ -108,5 +109,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- Back button -->
     <a href="index.php" class="back-button">&#8678; Back to Main</a>
+
+     <!-- Footer -->
+     <footer>
+        <p>&copy; 2023 by Ctrl+Alt+Elite</p>
+    </footer>
+    
 </body>
 </html>

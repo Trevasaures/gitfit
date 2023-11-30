@@ -102,5 +102,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="login-link">
             <a href="login.php" class="button">Already have an account? Login</a>
         </div>
+
+         <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 by Ctrl+Alt+Elite</p>
+    </footer>
+    
     </body>
 </html>
