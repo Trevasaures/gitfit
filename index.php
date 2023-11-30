@@ -38,12 +38,12 @@ $currentWeight = $latestWeight ? $latestWeight['weight'] : 'No record for today!
 </head>
 <body>
     <!-- Main header for applicaiton -->
-    <h1>Hello, GitFit App!</h1>
+    <h1>Welcome to GitFit</h1>
     <!-- Display user stats, progress, and other general information here -->
-    <p>User: <?php echo htmlspecialchars($userData['username']); ?></p> <!-- htmlspecialchars() converts special characters to HTML entities -->
-    <p>Weight: <?php echo htmlspecialchars($currentWeight); ?></p>
-    <p>Target Weight: <?php echo htmlspecialchars($userData['target_weight']); ?></p>
-    <p>Height: <?php echo htmlspecialchars($userData['height_inches']); ?></p>
+    <p>User - <?php echo htmlspecialchars($userData['username']); ?></p> <!-- htmlspecialchars() converts special characters to HTML entities -->
+    <p>Weight - <?php echo htmlspecialchars($currentWeight); ?></p>
+    <p>Target Weight - <?php echo htmlspecialchars($userData['target_weight']); ?></p>
+    <p>Height - <?php echo htmlspecialchars($userData['height_inches']); ?></p>
 
 
     <!-- Secondary smaller header for application -->
@@ -51,11 +51,18 @@ $currentWeight = $latestWeight ? $latestWeight['weight'] : 'No record for today!
 
     <!-- Navigation links to other sections -->
     <a href="weight.php">Weight Tracking</a>
-    <a href="food.php">Food Calculator</a>
-    <a href="notes.php">Note Records</a>
     <a href="workouts.php">Workout Tracking</a>
+    <a href="notes.php">Note Records</a>
+    <a href="food.php">Lifestyle</a>
+    
 
     <!-- Back button -->
-    <a href="login.php" class="back-button">&#8678; Back to Login</a>
+    <a href="login.php" class="back-button">&#8678; Logout</a>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 by Ctrl+Alt+Elite</p>
+    </footer>
+
 </body>
 </html>

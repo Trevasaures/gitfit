@@ -42,25 +42,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     
     <!-- Add a section to display existing notes -->
-    <h2>Personal Tracking Notes:</h2>
+    <h1>Note Records</h1>
+    <h3>Use this section to keep track of your personal notes!</h3>
+    <table>
+    <thead>
+        <tr>
+            <th>Date </th>
+            <th>Note </th>
+        </tr>
+    </thead>
+<tbody>
+
     <?php
     while ($note = $noteStmt->fetch(PDO::FETCH_ASSOC)) {
         $noteDate = new DateTime($note['note_date']);
-        echo "<div class='note'>";
-        echo "<p class='note-date'>" . $noteDate->format('F j, Y H:i:s') . "</p>";
-        echo "<p class='note-content'>" . htmlspecialchars($note['note_content']) . "</p>";
-        echo "</div>";
+        echo "<tr>";
+        echo "<td>" . $noteDate->format('F j, Y H:i:s') . "</p>";
+        echo "<td>" . htmlspecialchars($note['note_content']) . "</p>";
+        echo "</tr>";
     }
     ?>
+</tbody>
+</table>
 
     <!-- Form for creating new notes -->
     <form action="notes.php" method="post">
         <textarea name="new_note_content" placeholder="Enter your new note"></textarea>
-        <input type="submit" value="Add Note">
+
+        <button type="submit">Add</button>  
+
     </form>
 
     <!-- Back button -->
-    <a href="index.php" class="back-button">&#8678; Back to Main Menu</a>
+    <a href="index.php" class="back-button">&#8678; Back to Main</a>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 by Ctrl+Alt+Elite</p>
+    </footer>
+
 </body>
 </html>
 

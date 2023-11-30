@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2023 at 10:00 PM
+-- Generation Time: Nov 30, 2023 at 03:50 AM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,7 +48,34 @@ CREATE TABLE `users_table` (
 INSERT INTO `users_table` (`name`, `age`, `gender`, `email`, `password`, `current_weight`, `target_weight`, `height_inches`, `id`, `username`, `created_at`) VALUES
 ('cameron perez', 27, 'male', 'perecame8700@gmail.com', '$2y$10$lv4EbAlYzIp8huPkO/wU0uVrfLNTXFL8gpFi2O2YdeGN51As4jNoK', 180, 190, 72, 1, 'camperez', '2023-11-17 18:15:38'),
 ('cameron perez', 27, 'male', 'cameron.perez@my.utsa.edu', '$2y$10$siCDRFWWJ91q.sNnLupO0eFU1A5tOO4Xx730E8zT1DENJsD5Lyf4C', 187, 190, 72, 2, 'life', '2023-11-17 19:32:26'),
-('timmy tim', 27, 'male', 'tim@gmail.com', '$2y$10$MODK1R/gofi9sbUU9MD6.eZvzAlA8U701rezFZiNmGXQPJoGqiz3y', 180, 190, 72, 3, 'tim', '2023-11-18 02:09:18');
+('timmy tim', 27, 'male', 'tim@gmail.com', '$2y$10$MODK1R/gofi9sbUU9MD6.eZvzAlA8U701rezFZiNmGXQPJoGqiz3y', 180, 190, 72, 3, 'tim', '2023-11-18 02:09:18'),
+('Trevor', 27, 'male', 'trevorcolen1@gmail.com', '$2y$10$UrZWbKP9T7Dj3wJjWKdrMexTldk87QhW8l3zpf8OQOnCLtUpe9zBG', 168, 160, 67, 4, 'Trevasaures', '2023-11-28 20:58:07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_notes`
+--
+
+CREATE TABLE `user_notes` (
+  `note_id` int(11) NOT NULL,
+  `id` int(11) DEFAULT NULL,
+  `note_title` varchar(255) DEFAULT NULL,
+  `note_content` text DEFAULT NULL,
+  `note_date` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_notes`
+--
+
+INSERT INTO `user_notes` (`note_id`, `id`, `note_title`, `note_content`, `note_date`) VALUES
+(11, 4, NULL, 'new notes', '2023-11-28 17:19:26'),
+(12, 4, NULL, 'new notes', '2023-11-28 17:19:29'),
+(13, 4, NULL, 'notes', '2023-11-28 17:24:20'),
+(14, 4, NULL, 'notes', '2023-11-28 17:24:23'),
+(15, 4, NULL, 'hi', '2023-11-29 20:46:10'),
+(16, 4, NULL, 'hi', '2023-11-29 20:46:19');
 
 -- --------------------------------------------------------
 
@@ -69,11 +96,13 @@ CREATE TABLE `weight_records` (
 
 INSERT INTO `weight_records` (`weight_id`, `id`, `weight_date`, `weight`) VALUES
 (1, 2, '2023-11-17', 189.00),
-(3, 3, '2023-11-17', 191.00);
+(3, 3, '2023-11-17', 191.00),
+(9, 4, '2023-11-28', 168.00);
 
+-- --------------------------------------------------------
 
 --
--- Table structure for table `workout_data'
+-- Table structure for table `workout_data`
 --
 
 CREATE TABLE `workout_data` (
@@ -84,7 +113,6 @@ CREATE TABLE `workout_data` (
   `sets` int(11) NOT NULL,
   `reps` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 
 --
 -- Dumping data for table `workout_data`
@@ -106,18 +134,25 @@ ALTER TABLE `users_table`
   ADD UNIQUE KEY `UNIQUE_USERNAM` (`username`);
 
 --
+-- Indexes for table `user_notes`
+--
+ALTER TABLE `user_notes`
+  ADD PRIMARY KEY (`note_id`),
+  ADD KEY `id` (`id`);
+
+--
 -- Indexes for table `weight_records`
 --
 ALTER TABLE `weight_records`
   ADD PRIMARY KEY (`weight_id`),
   ADD UNIQUE KEY `id` (`id`,`weight_date`);
 
-  --
-  -- Indexes for table `workout_data`
-  --
-  ALTER TABLE `workout_data`
-    ADD PRIMARY KEY (`workout_id`),
-    ADD UNIQUE KEY `id` (`id`,`date`);
+--
+-- Indexes for table `workout_data`
+--
+ALTER TABLE `workout_data`
+  ADD PRIMARY KEY (`workout_id`),
+  ADD UNIQUE KEY `id` (`id`,`date`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -127,30 +162,41 @@ ALTER TABLE `weight_records`
 -- AUTO_INCREMENT for table `users_table`
 --
 ALTER TABLE `users_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `user_notes`
+--
+ALTER TABLE `user_notes`
+  MODIFY `note_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `weight_records`
 --
 ALTER TABLE `weight_records`
-  MODIFY `weight_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `weight_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `workout_data`
 --
 ALTER TABLE `workout_data`
-  MODIFY `workout_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `workout_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `user_notes`
+--
+ALTER TABLE `user_notes`
+  ADD CONSTRAINT `user_notes_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users_table` (`id`);
+
+--
 -- Constraints for table `weight_records`
 --
 ALTER TABLE `weight_records`
   ADD CONSTRAINT `weight_records_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users_table` (`id`);
-COMMIT;
 
 --
 -- Constraints for table `workout_data`
