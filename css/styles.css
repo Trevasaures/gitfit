@@ -20,6 +20,7 @@ body {
 }
 
 /* Styling for main header 1 */
+/*
 h1{
     font-size: 55px;
     font-weight: 600;
@@ -28,6 +29,13 @@ h1{
     background-clip: text;
     
 }    
+*/
+/* Styling for main header 1 and 2 */
+h1, h2 {
+    color: #333;
+    border-radius: 5px;
+    box-shadow: 2px 4px 15px #414040;
+}
 
 a {
     display: inline-block;
